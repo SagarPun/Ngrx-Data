@@ -1,6 +1,34 @@
 {
   "version": 1,
   "projects": {
+    "homepage": {
+      "projectType": "library",
+      "root": "libs/homepage",
+      "sourceRoot": "libs/homepage/src",
+      "prefix": "sagar-tutorial",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/homepage"
+          ],
+          "options": {
+            "jestConfig": "libs/homepage/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/homepage/src/**/*.ts",
+              "libs/homepage/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
     "test-ngrx-data": {
       "projectType": "application",
       "root": "apps/test-ngrx-data",
@@ -9,7 +37,9 @@
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/apps/test-ngrx-data",
             "index": "apps/test-ngrx-data/src/index.html",
@@ -21,7 +51,10 @@
               "apps/test-ngrx-data/src/favicon.ico",
               "apps/test-ngrx-data/src/assets"
             ],
-            "styles": ["apps/test-ngrx-data/src/styles.scss"],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "apps/test-ngrx-data/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -86,7 +119,9 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/test-ngrx-data"],
+          "outputs": [
+            "coverage/apps/test-ngrx-data"
+          ],
           "options": {
             "jestConfig": "apps/test-ngrx-data/jest.config.js",
             "passWithNoTests": true
@@ -114,14 +149,20 @@
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
-          "outputs": ["{options.outputFile}"],
+          "outputs": [
+            "{options.outputFile}"
+          ],
           "options": {
-            "lintFilePatterns": ["apps/test-ngrx-data-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/test-ngrx-data-e2e/**/*.{js,ts}"
+            ]
           }
         }
       },
       "tags": [],
-      "implicitDependencies": ["test-ngrx-data"]
+      "implicitDependencies": [
+        "test-ngrx-data"
+      ]
     }
   }
 }
